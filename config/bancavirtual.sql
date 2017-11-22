@@ -3,23 +3,7 @@ CREATE TABLE user (
     username VARCHAR(128) NOT NULL,
     password VARCHAR(128) NOT NULL,
     email VARCHAR(128) NOT NULL
-) ENGINE=INNODB;
-
-CREATE TABLE clientes (
-  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(128) NOT NULL,
-  password VARCHAR(128) NOT NULL,
-  cedula VARCHAR(32) NOT NULL,
-  telefono VARCHAR(32) NOT NULL,
-  direccion VARCHAR (32) NOT NULL,
-  sexo VARCHAR(16) NOT NULL,
-  email VARCHAR(128) NOT NULL,
-  cuentas_id INTEGER NOT NULL,
-  tarjetas_id INTEGER,
-  FOREIGN KEY (cuentas_id) REFERENCES cuentas(id) ON DELETE CASCADE,
-  FOREIGN KEY (tarjetas_id) REFERENCES tarjetas(id) ON DELETE CASCADE,
-  UNIQUE (cedula)
-) ENGINE=INNODB;
+)ENGINE=INNODB;
 
 CREATE TABLE cuentas (
   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -35,13 +19,31 @@ CREATE TABLE tarjetas (
   tipo VARCHAR (16)
 )ENGINE=INNODB;
 
+CREATE TABLE clientes (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nombres VARCHAR(128) NOT NULL,
+  apellidos VARCHAR(128) NOT NULL,
+  cedula VARCHAR(32) NOT NULL,
+  telefono VARCHAR(32) NOT NULL,
+  direccion VARCHAR (32) NOT NULL,
+  sexo VARCHAR(16) NOT NULL,
+  email VARCHAR(128) NOT NULL,
+  cuentas_id INTEGER,
+  tarjetas_id INTEGER,
+  FOREIGN KEY (cuentas_id) REFERENCES cuentas(id) ON DELETE CASCADE,
+  FOREIGN KEY (tarjetas_id) REFERENCES tarjetas(id) ON DELETE CASCADE,
+  UNIQUE (cedula)
+)ENGINE=INNODB;
+
 CREATE TABLE trasferencias (
   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  numero INTEGER NOT NULL AUTO_INCREMENT,
+  numero INTEGER NOT NULL,
   monto FLOAT (10,2),
   fecha_transferencia TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   cliente_origen_id INTEGER,
   cliente_destino_id INTEGER,
-  FOREIGN KEY (cliente_origen_id) REFERENCES cliente(id) ON DELETE CASCADE,
-  FOREIGN KEY (tarjetas_destinoi_id) REFERENCES cliente(id) ON DELETE CASCADE,
+  FOREIGN KEY (cliente_origen_id) REFERENCES clientes(id) ON DELETE CASCADE,
+  FOREIGN KEY (cliente_destino_id) REFERENCES clientes(id) ON DELETE CASCADE
 )ENGINE=INNODB;
+
+INSERT INTO user (username, password, email) VALUES ('admin', '4aae984230416ba76f98be2fd11e1aa71d90630a', 'julio.carvajal@outlook.com');
