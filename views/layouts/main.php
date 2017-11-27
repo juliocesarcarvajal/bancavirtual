@@ -38,9 +38,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Clientes', 'url' => ['/clientes/index'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Cuentas', 'url' => ['/cuentas/index'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Tarjetas', 'url' => ['/tarjetas/index'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Transferencias', 'url' => ['/transferencias/index'],'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -71,7 +73,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; PROGRAMACIÓN AVANZADA <?= date('Y') ?></p>
 
-        <p class="pull-right"><!--?= Yii::powered() ?--> HECHO ♥ POR ANA MARÍA ÁLZATE </p>
+        <p class="pull-right"><!--?= Yii::powered() ?--> HECHO CON ♥ POR ANA MARÍA ÁLZATE </p>
     </div>
 </footer>
 

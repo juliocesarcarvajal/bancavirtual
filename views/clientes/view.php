@@ -2,17 +2,19 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Cuentas;
+use app\models\Tarjetas;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Clientes */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $model->nombres.' '.$model->apellidos;
 ?>
 <div class="clientes-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Detalle del cliente: <?= Html::encode($model->nombres.' '.$model->apellidos) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -36,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'direccion',
             'sexo',
             'email:email',
-            'cuentas_id',
-            'tarjetas_id',
+            'cuentas_id' => array('label' => 'Cuenta', 'value' => Cuentas::findOne($model->cuentas_id)->numero),
+            'tarjetas_id' => array('label' => 'Tarjeta', 'value' => Tarjetas::findOne($model->tarjetas_id)->numero),
         ],
     ]) ?>
 

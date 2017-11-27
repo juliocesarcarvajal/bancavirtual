@@ -35,13 +35,12 @@ CREATE TABLE tarjetas (
   tipo VARCHAR (16)
 )ENGINE=INNODB;
 
-CREATE TABLE trasferencias (
+CREATE TABLE transferencias (
   id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  numero INTEGER NOT NULL AUTO_INCREMENT,
   monto FLOAT (10,2),
   fecha_transferencia TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   cliente_origen_id INTEGER,
   cliente_destino_id INTEGER,
-  FOREIGN KEY (cliente_origen_id) REFERENCES cliente(id) ON DELETE CASCADE,
-  FOREIGN KEY (tarjetas_destinoi_id) REFERENCES cliente(id) ON DELETE CASCADE,
+  FOREIGN KEY (cliente_origen_id) REFERENCES clientes(id) ON DELETE CASCADE,
+  FOREIGN KEY (cliente_destino_id) REFERENCES clientes(id) ON DELETE CASCADE
 )ENGINE=INNODB;

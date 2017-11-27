@@ -16,10 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cupo')->textInput() ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipo')->dropDownList(['Visa' => 'Visa', 'Mastercard' => 'Mastercard'],['prompt'=>'Escoja el tipo de tarjeta'])?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

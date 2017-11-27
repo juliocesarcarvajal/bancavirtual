@@ -4,15 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Cuentas */
+/* @var $model app\models\Transferencias */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Cuentas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Transferencias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cuentas-view">
+<div class="transferencias-view">
 
-    <h1>Cuenta tipo <?= Html::encode($model->tipo) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,9 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'numero',
-            'saldo',
-            'tipo',
+            'monto',
+            'fecha_transferencia',
+            'cliente_origen_id',
+            'cliente_destino_id',
         ],
     ]) ?>
 
