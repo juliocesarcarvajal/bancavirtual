@@ -43,6 +43,7 @@ AppAsset::register($this);
             ['label' => 'Cuentas', 'url' => ['/cuentas/index'],'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Tarjetas', 'url' => ['/tarjetas/index'],'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Transferencias', 'url' => ['/transferencias/index'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Pagos de Servicios', 'url' => ['/pagos/index'],'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -71,9 +72,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; PROGRAMACIÓN AVANZADA <?= date('Y') ?></p>
+        <p class="pull-left">&copy; PROGRAMACIÓN AVANZADA PROYECTO FINAL <?= date('Y') ?></p>
 
-        <p class="pull-right"><!--?= Yii::powered() ?--> HECHO CON ♥ POR ANA MARÍA ÁLZATE </p>
+        <p class="pull-right"><!--?= Yii::powered() ?--> HECHO CON ♥ POR ANA MARÍA ÁLZATE Y JUAN DIEGO GÓMEZ </p>
     </div>
 </footer>
 

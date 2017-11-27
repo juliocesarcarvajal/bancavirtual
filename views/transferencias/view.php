@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Clientes;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Transferencias */
@@ -31,8 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'monto',
             'fecha_transferencia',
-            'cliente_origen_id',
-            'cliente_destino_id',
+            'cliente_origen_id' => array('label' => 'Cliente Origen', 'value' =>
+            Clientes::findOne($model->cliente_origen_id)->nombres.' '.
+            Clientes::findOne($model->cliente_origen_id)->apellidos.' | Cédula '.
+            Clientes::findOne($model->cliente_origen_id)->cedula),
+            'cliente_destino_id'=> array('label' => 'Cliente Origen', 'value' =>
+            Clientes::findOne($model->cliente_destino_id)->nombres.' '.
+            Clientes::findOne($model->cliente_destino_id)->apellidos.' | Cédula '.
+            Clientes::findOne($model->cliente_destino_id)->cedula),
         ],
     ]) ?>
 

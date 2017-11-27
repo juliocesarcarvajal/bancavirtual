@@ -44,3 +44,11 @@ CREATE TABLE transferencias (
   FOREIGN KEY (cliente_origen_id) REFERENCES clientes(id) ON DELETE CASCADE,
   FOREIGN KEY (cliente_destino_id) REFERENCES clientes(id) ON DELETE CASCADE
 )ENGINE=INNODB;
+
+CREATE TABLE pagos (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  servicio VARCHAR(32) NOT NULL,
+  valor FLOAT (10,2),
+  cliente_origen_id INTEGER NOT NULL,
+  FOREIGN KEY (cliente_origen_id) REFERENCES clientes(id) ON DELETE CASCADE
+)ENGINE=INNODB;
